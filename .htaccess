@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /
+
+# Entfernt die .php-Endung von den URLs
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# Wenn die URL mit index.php endet, leite um auf die URL ohne index.php
+RewriteCond %{THE_REQUEST} /index\.php [NC]
+RewriteRule ^index\.php$ / [L,R=301]
+# index am Ende wird zu /
+RewriteCond %{THE_REQUEST} /index [NC]
+RewriteRule ^index$ / [L,R=301]
